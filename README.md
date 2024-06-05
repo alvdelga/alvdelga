@@ -1,5 +1,4 @@
 ## Hi, I'm Álvaro Delgado Matud 🖖
-.
 
 <!-- Badges
 Use this website to generate badges: https://shields.io/
