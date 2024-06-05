@@ -8,7 +8,7 @@ Use this website to generate badges: https://shields.io/
 [![Github](https://img.shields.io/badge/-Github-000?style=flat&logo=Github&logoColor=white)](https://github.com/alvdelga)
 [![Linkedin](https://img.shields.io/badge/-LinkedIn-blue?style=flat&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/alvaro-delgado-matud-248686299/)
 [![Gmail](https://img.shields.io/badge/-Gmail-c14438?style=flat&logo=Gmail&logoColor=white)](mailto:amatud7@gmail.com)
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=alvdelga&label=Vistas%20Perfil&color=0e75b6&style=flat" alt="alvdelga" /> </p>
+
 
 
 
@@ -35,8 +35,3 @@ Use this website to generate badges: https://shields.io/
   <br />
 </p>
 
-## My Github Information 📊
-
-<p align="center">&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=jzjavier&show_icons=true&locale=en" alt="jzjavier" /></p>
-
-<p align="center"><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=jzjavier&" alt="jzjavier" /></p>
