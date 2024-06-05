@@ -15,23 +15,5 @@ Use this website to generate badges: https://shields.io/
 **About me:**
 <!-- Any image aligned to the right. Beware the width -->
 
-![42 banner](https://github.com/JZJavier/JZJavier/assets/76801285/04ca5675-b9fe-4f8f-a5f2-514786492c31)
-
-
-**Languages and Tools:** 
-
-
-  <!-- Languages and tools. 
-  https://simpleicons.org/
-  -->
-  <code><img width="5%" src="https://unpkg.com/simple-icons@v11/icons/c.svg"></code>
-  <code><img width="5%" src="https://unpkg.com/simple-icons@v11/icons/gnubash.svg"></code>
-  <br />
-  <code><img width="5%" src="https://unpkg.com/simple-icons@v11/icons/git.svg"></code>
-  <br />
-  <code><img width="5%" src="https://unpkg.com/simple-icons@v11/icons/vim.svg"></code>
-  <code><img width="5%" src="https://unpkg.com/simple-icons@v11/icons/visualstudiocode.svg"></code>
-  <br />
-  <br />
-</p>
+![42 banner](https://private-user-images.githubusercontent.com/76801285/302046178-04ca5675-b9fe-4f8f-a5f2-514786492c31.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTc2MjYzMTEsIm5iZiI6MTcxNzYyNjAxMSwicGF0aCI6Ii83NjgwMTI4NS8zMDIwNDYxNzgtMDRjYTU2NzUtYjlmZS00ZjhmLWE1ZjItNTE0Nzg2NDkyYzMxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA2MDUlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNjA1VDIyMjAxMVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTAzNzczNWI4ZGMyODQ1OWQyM2NlMDkwZGJmMWUzZGJmZjViN2EwMWI5MzE3NDY1ODk4OWRjMzRmNzhiZGEyMzkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.nTK5-jyoRkqaHs34Sz4F91gPIfVKKQQxkWEYGycCWa0)
 
