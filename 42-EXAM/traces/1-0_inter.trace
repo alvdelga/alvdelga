@@ -1,0 +1,8 @@
+----------------8<-------------[ START TEST 
+        💻 TEST
+./a.out "padinton" "paqefwtdjetyiytjneytjoeyjnejeyj" 
+        🔎 YOUR OUTPUT:
+padinton$
+        🗝 EXPECTED OUTPUT:
+padinto$
+----------------8<------------- END TEST ]
