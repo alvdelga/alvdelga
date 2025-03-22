@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:20:06 by druina            #+#    #+#             */
-/*   Updated: 2025/03/22 08:41:42 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/22 08:42:00 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void				destory_all(char *str, t_program *program,
 						pthread_mutex_t *forks);
 
 // Initialization
-void				init_program(t_program *program, t_philo *philos);
+int				init_program(t_program *program, t_philo *philos);
 int				init_forks(pthread_mutex_t *forks, int philo_num);
 void				init_philos(t_philo *philos, t_program *program,
 						pthread_mutex_t *forks, char **argv);
