@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:23:28 by druina            #+#    #+#             */
-/*   Updated: 2025/03/22 06:18:54 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/22 06:45:10 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,5 @@ int	main(int argc, char **argv)
 	init_philos(philos, &program, forks, argv);
 	create_thread(&program, forks);
 	all_destory(NULL, &program, forks);
-	return (0);
+	return (1);
 }
