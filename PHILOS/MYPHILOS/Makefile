@@ -6,13 +6,13 @@
 #    By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 14:19:21 by druina            #+#    #+#              #
-#    Updated: 2025/03/22 07:16:25 by alvdelga         ###   ########.fr        #
+#    Updated: 2025/03/23 21:25:27 by alvdelga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 
-SRC = main.c utils.c init.c threads.c monitor.c routine_actions.c
+SRC = main.c init.c threads.c monitor.c routine_actions.c utils.c
 
 MANPATH = $(addprefix ./src/, $(SRC))
 
@@ -21,8 +21,6 @@ FLAGS = -pthread
 HEADER = ./src/philo.h
 
 # SANITIZER = -fsanitize=thread
-
-.PHONY: all clean fclean re debug
 
 all: $(NAME)
 

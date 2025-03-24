@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:20:06 by druina            #+#    #+#             */
-/*   Updated: 2025/03/22 08:42:00 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/23 21:33:01 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 
-# define PHILO_MAX 300
+# define MAX_PHILO 300
 
 typedef struct s_philo
 {
@@ -80,7 +80,7 @@ int					check_if_dead(t_philo *philos);
 int					philosopher_dead(t_philo *philo, size_t time_to_die);
 
 // Utils
-int					ft_atoi(char *str);
+int					ft_atoi(const char *str);
 int					ft_usleep(size_t microseconds);
 int					ft_strlen(char *str);
 void				print_message(char *str, t_philo *philo, int id);
