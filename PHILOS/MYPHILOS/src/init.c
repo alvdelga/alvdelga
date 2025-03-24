@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:05:40 by druina            #+#    #+#             */
-/*   Updated: 2025/03/23 22:05:19 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/24 14:26:01 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,30 +33,28 @@ void	init_philos(t_philo *philos, t_program *program, pthread_mutex_t *forks,
 {
 	int		i;
 	int		num_philos;
-	t_philo	*philo;
+	t_philo	*philosofer;
 
 	i = 0;
 	num_philos = ft_atoi(argv[1]);
 	while (i < num_philos)
 	{
-		philo = &philos[i];
-		philo->id = i + 1;
-		philo->eating = 0;
-		philo->meals_eaten = 0;
-		init_input(philo, argv);
-		philo->start_time = get_current_time();
-		philo->last_meal = philo->start_time;
-		philo->write_lock = &program->write_lock;
-		philo->dead_lock = &program->dead_lock;
-		philo->meal_lock = &program->meal_lock;
-		philo->dead = &program->dead_flag;
-		philo->l_fork = &forks[i];
-		philo->r_fork = &forks[(i - 1 + num_philos) % num_philos];
+		philosofer = &philos[i];
+		philosofer->id = i + 1;
+		philosofer->eating = 0;
+		philosofer->meals_eaten = 0;
+		init_input(philosofer, argv);
+		philosofer->start_time = get_current_time();
+		philosofer->last_meal = philosofer->start_time;
+		philosofer->write_lock = &program->write_lock;
+		philosofer->dead_lock = &program->dead_lock;
+		philosofer->meal_lock = &program->meal_lock;
+		philosofer->dead = &program->dead_flag;
+		philosofer->l_fork = &forks[i];
+		philosofer->r_fork = &forks[(i - 1 + num_philos) % num_philos];
 		i++;
 	}
 }
-
-// Initializing the forks mutexes
 
 int	init_forks(pthread_mutex_t *forks, int philo_num)
 {
@@ -76,7 +74,6 @@ int	init_forks(pthread_mutex_t *forks, int philo_num)
 	return (0);
 }
 
-// Initializing the program structure
 
 int	init_program(t_program *program, t_philo *philos)
 {

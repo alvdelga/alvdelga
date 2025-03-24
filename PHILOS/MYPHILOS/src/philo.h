@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:20:06 by druina            #+#    #+#             */
-/*   Updated: 2025/03/23 21:33:01 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/24 17:24:05 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,12 @@ typedef struct s_philo
 {
 	pthread_t		thread;
 	int				id;
-	bool				eating;
-	int				meals_eaten;
-	size_t			last_meal;
+
+	// 🔒 Estas variables están protegidas por meal_lock
+	bool			eating;         // Indica si el filósofo está comiendo
+	int				meals_eaten;    // Cuántas veces ha comido
+	size_t			last_meal;      // Último tiempo en que comió
+
 	size_t			time_to_die;
 	size_t			time_to_eat;
 	size_t			time_to_sleep;
@@ -35,12 +38,16 @@ typedef struct s_philo
 	int				num_of_philos;
 	int				num_times_to_eat;
 	int				*dead;
-	pthread_mutex_t	*r_fork;
-	pthread_mutex_t	*l_fork;
-	pthread_mutex_t	*write_lock;
-	pthread_mutex_t	*dead_lock;
-	pthread_mutex_t	*meal_lock;
-}					t_philo;
+
+	pthread_mutex_t	*r_fork;       // Tenedor izquierdo
+	pthread_mutex_t	*l_fork;       // Tenedor derecho
+
+	// Mutex compartidos
+	pthread_mutex_t	*write_lock;   // Protege los mensajes en consola
+	pthread_mutex_t	*dead_lock;    // Protege el acceso a dead_flag
+	pthread_mutex_t	*meal_lock;    // Protege eating, meals_eaten, last_meal
+}	t_philo;
+
 typedef struct s_program
 {
 	int				dead_flag;

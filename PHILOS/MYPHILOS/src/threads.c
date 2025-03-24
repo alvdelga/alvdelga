@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 21:21:19 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/23 21:21:21 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/24 11:25:35 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	*philo_routine(void *pointer)
 	t_philo	*philo;
 
 	philo = (t_philo *)pointer;
-	if (philo->id % 2 == 0)
-		ft_usleep(1);
 	while (!dead_loop(philo))
 	{
 		eat(philo);

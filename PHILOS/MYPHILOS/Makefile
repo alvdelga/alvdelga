@@ -5,38 +5,36 @@
 #                                                     +:+ +:+         +:+      #
 #    By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/26 14:19:21 by druina            #+#    #+#              #
-#    Updated: 2025/03/23 21:25:27 by alvdelga         ###   ########.fr        #
+#    Created: 2025/03/24 10:45:43 by alvdelga          #+#    #+#              #
+#    Updated: 2025/03/24 12:29:21 by alvdelga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = philo
+NAME		:= philo
+SRCFILES	:= main.c init.c threads.c monitor.c routine_actions.c utils.c
+SRC			:= $(addprefix ./src/, $(SRCFILES))
 
-SRC = main.c init.c threads.c monitor.c routine_actions.c utils.c
+CC			:= gcc
+CFLAGS		:= -Wall -Wextra -Werror -pthread
+SANITIZER	:= -fsanitize=thread
 
-MANPATH = $(addprefix ./src/, $(SRC))
-
-FLAGS = -pthread
-
-HEADER = ./src/philo.h
-
-# SANITIZER = -fsanitize=thread
+# 🧠 Build target
+$(NAME): $(SRC)
+	@$(CC) $(CFLAGS) $(SRC) -o $(NAME) $(SANITIZER)
 
 all: $(NAME)
-
-$(NAME): $(MANPATH) $(HEADER)
-	@cc $(FLAGS) -o $(NAME) $(MANPATH) $(SANITIZER)
 
 clean:
 	@rm -f $(NAME)
 
 fclean: clean
-	@rm -f $(NAME)
 
 re: fclean all
-
-debug: FLAGS += -g
+debug: CFLAGS += -g
 debug: re
 
+# ⏱ Extra utility (custom command)
 delay:
-	python3 delay_o_meter.py
+	@python3 delay_o_meter.py
+
+.PHONY: all clean fclean re debug delay
