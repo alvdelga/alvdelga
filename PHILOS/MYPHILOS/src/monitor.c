@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 21:20:25 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/25 13:35:31 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:12:08 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	print_message(char *str, t_philo *philo, int id)
 	pthread_mutex_lock(philo->write_lock);
 	time = get_current_time() - philo->start_time;
 	if (!dead_loop(philo))
-		printf("%zu %d %s\n", time, id, str);
+		printf(GREEN"[%ld]"RESET" %d %s\n", time, id, str);
+		// printf("%zu %d %s\n", time, id, str);
 	pthread_mutex_unlock(philo->write_lock);
 }
 
@@ -48,7 +49,8 @@ int	check_if_dead(t_philo *philos)
 	{
 		if (philosopher_dead(&philos[i], philos[i].time_to_die))
 		{
-			print_message("died", &philos[i], philos[i].id);
+			// print_action(&philos[i], RED" died"RESET);
+			print_message(RED" died"RESET, &philos[i], philos[i].id);
 			pthread_mutex_lock(philos[i].dead_lock);
 			*philos->dead = 1;
 			pthread_mutex_unlock(philos[i].dead_lock);

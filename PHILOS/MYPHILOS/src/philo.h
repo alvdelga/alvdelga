@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:20:06 by druina            #+#    #+#             */
-/*   Updated: 2025/03/24 17:24:05 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/25 17:07:59 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <stdbool.h>
 
 # define MAX_PHILO 300
+# define RESET    "\033[0m"
+# define RED      "\033[31m"    /* Red */
+# define GREEN    "\033[32m" 
 
 typedef struct s_philo
 {
