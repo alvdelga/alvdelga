@@ -6,7 +6,7 @@
 #    By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/26 14:19:21 by druina            #+#    #+#              #
-#    Updated: 2025/03/22 07:14:13 by alvdelga         ###   ########.fr        #
+#    Updated: 2025/03/25 13:11:06 by alvdelga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ FLAGS = -pthread
 
 HEADER = ./src/philo.h
 
-# SANITIZER = -fsanitize=thread
+# SANITIZER = -fsanitize=thread -g
 
 .PHONY: all clean fclean re debug
 
@@ -37,7 +37,7 @@ fclean: clean
 
 re: fclean all
 
-debug: FLAGS += -g
+debug: FLAGS += -g3
 debug: re
 
 delay:

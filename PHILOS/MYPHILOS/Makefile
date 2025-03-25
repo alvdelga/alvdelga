@@ -6,7 +6,7 @@
 #    By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 10:45:43 by alvdelga          #+#    #+#              #
-#    Updated: 2025/03/24 12:29:21 by alvdelga         ###   ########.fr        #
+#    Updated: 2025/03/25 14:26:52 by alvdelga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC			:= $(addprefix ./src/, $(SRCFILES))
 
 CC			:= gcc
 CFLAGS		:= -Wall -Wextra -Werror -pthread
-SANITIZER	:= -fsanitize=thread
+SANITIZER	:= -fsanitize=address
 
 # 🧠 Build target
 $(NAME): $(SRC)
@@ -24,7 +24,7 @@ $(NAME): $(SRC)
 
 all: $(NAME)
 
-clean:
+clean:		
 	@rm -f $(NAME)
 
 fclean: clean
