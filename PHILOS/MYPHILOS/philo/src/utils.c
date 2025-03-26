@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 09:17:55 by druina            #+#    #+#             */
-/*   Updated: 2023/08/16 16:31:28 by druina           ###   ########.fr       */
+/*   Created: 2025/03/23 19:57:43 by alvdelga          #+#    #+#             */
+/*   Updated: 2025/03/26 15:54:25 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+# include "philo.h"
+
+int	ft_atoi(const char *str)
+{
+	unsigned long long res;
+	int			negative;
+
+	negative = 1;
+	res = 0;
+	while (*str && (*str == ' ' || *str == '\n' || *str == '\t'
+			|| *str == '\v' || *str == '\f' || *str == '\r'))
+		++str;
+	if (*str == '-')
+		negative = -1;
+	if (*str == '-' || *str == '+')
+		++str;
+	while (*str && *str >= '0' && *str <= '9')
+	{
+		res = res * 10 + (*str - 48);
+		++str;
+	}
+	return (res * negative);
+}
 
 // Checks the len of the string
 
@@ -24,31 +46,6 @@ int	ft_strlen(char *str)
 	while (str[i] != '\0')
 		i++;
 	return (i);
-}
-// Own version of atoi
-
-int	ft_atoi(char *str)
-{
-	unsigned long long	nb;
-	int					sign;
-	int					i;
-
-	nb = 0;
-	sign = 1;
-	i = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r')
-		i++;
-	if (str[i] == '-')
-		sign = -1;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nb = nb * 10 + (str[i] - '0');
-		i++;
-	}
-	return (sign * nb);
 }
 // Destroys all the mutexes
 
@@ -83,8 +80,11 @@ int	ft_usleep(size_t milliseconds)
 		usleep(500);
 	return (0);
 }
-
-// Gets the current time in milliseconds
+// Esta función duerme durante el tiempo indicado en milisegundos,
+// dividiendo el sueño en pausas pequeñas (0.5 ms) para comprobar
+// frecuentemente si ya ha pasado el tiempo requerido. Esto mejora
+// la precisión frente a usleep tradicional, que puede dormir más
+// de lo esperado en entornos multihilo.
 
 size_t	get_current_time(void)
 {

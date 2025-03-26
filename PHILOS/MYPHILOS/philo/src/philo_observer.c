@@ -12,22 +12,6 @@
 
 # include "philo.h"
 
-// Print message funtion
-
-void	print_message(char *str, t_philo *philo, int id)
-{
-	size_t	time;
-
-	pthread_mutex_lock(philo->write_lock);
-	time = get_current_time() - philo->start_time;
-	if (!dead_loop(philo))
-	{
-		// printf("DEBUG: philo %d impreso a %ld\n", id, get_current_time());
-		printf(GREEN"[%ld]"RESET" %d %s\n", time, id, str);
-	}
-	pthread_mutex_unlock(philo->write_lock);
-}
-
 int	philosopher_dead(t_philo *philo, size_t time_to_die)
 {
 	pthread_mutex_lock(philo->meal_lock);
@@ -43,7 +27,7 @@ int	philosopher_dead(t_philo *philo, size_t time_to_die)
 
 // Check if any philo died
 
-int	check_if_dead(t_philo *philos)
+int	check_dead(t_philo *philos)
 {
 	int	i;
 	int num_philos;
@@ -68,7 +52,7 @@ int	check_if_dead(t_philo *philos)
 
 // Checks if all the philos ate the num_of_meals
 
-int	check_if_all_ate(t_philo *philos)
+int	check_all_ate(t_philo *philos)
 {
 	int	i;
 	int	finished_eating;
@@ -104,7 +88,7 @@ void	*philo_observer(void *pointer)
 
 	philos = (t_philo *)pointer;
 	while (1)
-		if (check_if_dead(philos) == 1 || check_if_all_ate(philos) == 1)
+		if (check_dead(philos) == 1 || check_all_ate(philos) == 1)
 			break ;
 	return (pointer);
 }

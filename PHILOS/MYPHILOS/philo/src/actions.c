@@ -6,20 +6,32 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 08:48:15 by druina            #+#    #+#             */
-/*   Updated: 2025/03/26 11:27:12 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/26 21:34:19 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-// Think routine funtion
+
+void	print_message(char *str, t_philo *philo, int id)
+{
+	size_t	time;
+
+	pthread_mutex_lock(philo->write_lock);
+	time = get_current_time() - philo->start_time;
+	if (!dead_loop(philo))
+	{
+		// printf("DEBUG: philo %d impreso a %ld\n", id, get_current_time());
+		printf(GREEN"[%ld]"RESET" %d %s\n", time, id, str);
+	}
+	pthread_mutex_unlock(philo->write_lock);
+}
 
 void	think(t_philo *philo)
 {
 	print_message("is thinking", philo, philo->id);
 }
 
-// Dream routine funtion
 
 void	dream(t_philo *philo)
 {
@@ -27,7 +39,6 @@ void	dream(t_philo *philo)
 	ft_usleep(philo->time_to_sleep);
 }
 
-// Eat routine funtion
 
 void	eat(t_philo *philo)
 {
@@ -48,7 +59,7 @@ void	eat(t_philo *philo)
 	philo->meals_eaten++;
 	pthread_mutex_unlock(philo->meal_lock);
 	
-	// 🔍 DEBUG: imprime cuántas veces ha comido
+	// DEBUG: imprime cuántas veces ha comido
 	// printf("[DEBUG] Philo %d has eaten %d times\n", philo->id, philo->meals_eaten);
 	
 	ft_usleep(philo->time_to_eat);
