@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:20:06 by druina            #+#    #+#             */
-/*   Updated: 2025/03/25 17:07:59 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/26 10:03:25 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # define MAX_PHILO 300
 # define RESET    "\033[0m"
-# define RED      "\033[31m"    /* Red */
+# define RED      "\033[31m"
 # define GREEN    "\033[32m" 
 
 typedef struct s_philo
@@ -75,7 +75,7 @@ void				init_input(t_philo *philo, char **argv);
 
 // Threads
 int					thread_create(t_program *program, pthread_mutex_t *forks);
-void				*monitor(void *pointer);
+void				*philo_observer(void *pointer);
 void				*philo_routine(void *pointer);
 
 // Actions
@@ -83,7 +83,7 @@ void				eat(t_philo *philo);
 void				dream(t_philo *philo);
 void				think(t_philo *philo);
 
-// Monitor utils
+// observer utils
 int					dead_loop(t_philo *philo);
 int					check_if_all_ate(t_philo *philos);
 int					check_if_dead(t_philo *philos);
