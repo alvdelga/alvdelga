@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 21:21:19 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/26 10:20:54 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/27 12:11:15 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	*philo_routine(void *pointer)
 	// 	ft_usleep(10);
 	// if (philo->num_of_philos % 2 == 0)
 	// 	ft_usleep(10);
-	ft_usleep((philo->id % 2) * 10);
+	ft_usleep((philo->id % 2) * 5);
+	// ft_usleep((philo->id % 2) * (philo->time_to_eat * 0.9 + 1));
 	while (!dead_loop(philo))
 	{
 		eat(philo);
@@ -43,29 +44,6 @@ void	*philo_routine(void *pointer)
 	}
 	return (pointer);
 }
-/*
-╔═══════════════════════════════════════════════════╗
-║                   MAIN THREAD                     ║
-║  ┌──────────────────────────────────────────────┐ ║
-║  │  Lanza el hilo monitor y los hilos filósofos │ ║
-║  └──────────────────────────────────────────────┘ ║
-╚═══════════════════════════════════════════════════╝
-        │
-        ├─🧠 Hilo Monitor (philo_observer)
-        │     ├─ detecta muerte (check_if_dead)
-        │     └─ detecta fin por comidas (check_if_all_ate)
-        │
-        ├─🍝 Filósofo 1
-        │     └─ eat → sleep → think → eat → ...
-        ├─🍝 Filósofo 2
-        │     └─ eat → sleep → think → eat → ...
-        └─🍝 Filósofo N
-              └─ eat → sleep → think → eat → ...
-
-[ Todos los hilos terminan cuando dead_flag == 1 ]
-*/
-
-// Creates all the threads
 
 int	thread_create(t_program *program, pthread_mutex_t *forks)
 {

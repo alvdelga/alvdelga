@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:23:28 by druina            #+#    #+#             */
-/*   Updated: 2025/03/26 20:05:34 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/27 08:44:45 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,27 @@ int check_nbr(char *arg)
 
 int	check_valid_args(char **argv)
 {
-    int num_philo = ft_atoi(argv[1]);
-    int time_to_die = ft_atoi(argv[2]);
-    int time_to_eat = ft_atoi(argv[3]);
-    int time_to_sleep = ft_atoi(argv[4]);
-    // int num_to_eats = ft_atoi(argv[5]);
-    
+	int num_philo = ft_atoi(argv[1]);
+	int time_to_die = ft_atoi(argv[2]);
+	int time_to_eat = ft_atoi(argv[3]);
+	int time_to_sleep = ft_atoi(argv[4]);
+	// int num_to_eats = ft_atoi(argv[5]);
+
 	if (num_philo > MAX_PHILO || num_philo <= 0
 		|| check_nbr(argv[1]) == 1)
-	return (write(2, "\033[31m[!]\033[0m Invalid philosophers\n", 35), -1);
-	if (time_to_die <= 0 || check_nbr(argv[2]) == -1)
-		return (write(2, "\033[31m[!]\033[0m Invalid time to die\n", 34), -1);
-	if (time_to_eat <= 0 || check_nbr(argv[3]) == -1)
-		return (write(2, "\033[31m[!]\033[0m Invalid time to eat\n", 34), -1);
-	if (time_to_sleep <= 0 || check_nbr(argv[4]) == -1)
-		return (write(2, "\033[31m[!]\033[0m Invalid time to sleep\n", 36), -1);
+		return (printf("\033[31m[!]\033[0m Invalid philosophers\n"), -1);
+	if (time_to_die <= 0 || check_nbr(argv[2]) == 1)
+		return (printf("\033[31m[!]\033[0m Invalid time to die\n"), -1);
+	if (time_to_eat <= 0 || check_nbr(argv[3]) == 1)
+		return (printf("\033[31m[!]\033[0m Invalid time to eat\n"), -1);
+	if (time_to_sleep <= 0 || check_nbr(argv[4]) == 1)
+		return (printf("\033[31m[!]\033[0m Invalid time to sleep\n"), -1);
 	if (argv[5] && (ft_atoi(argv[5]) < 0 || check_nbr(argv[5]) == 1))
-		return (write(2, "\033[31m[!]\033[0m Invalid number of times\n", 38), -1);
+		return (printf("\033[31m[!]\033[0m Invalid number of times\n"), -1);
 
 	return (0);
 }
+
 
 int	main(int argc, char **argv)
 {
@@ -58,8 +59,7 @@ int	main(int argc, char **argv)
 	pthread_mutex_t	forks[MAX_PHILO];
 
 	if (argc != 5 && argc != 6)
-		return (write(2, "\033[31m[!]\033[0m Wrong arguments\n", 30), 1);
-
+		return (printf("\033[31m[!]\033[0m Wrong arguments\n"), 1);
 	if (check_valid_args(argv) == -1)
 		return (1);
     if (init_program(&program, philosofer) != 0)

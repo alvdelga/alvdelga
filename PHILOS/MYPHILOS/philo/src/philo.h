@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:20:06 by druina            #+#    #+#             */
-/*   Updated: 2025/03/26 20:20:05 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/27 11:58:01 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <sys/time.h>
 # include <unistd.h>
 # include <stdbool.h>
+# include <string.h>
 
 # define MAX_PHILO 300
 # define RESET    "\033[0m"
@@ -29,7 +30,7 @@ typedef struct s_philo
 	pthread_t		thread;
 	int				id;
 
-	// 🔒 Estas variables están protegidas por meal_lock
+	//Protegidas por meal_lock
 	bool			eating;         // Indica si el filósofo está comiendo
 	int				meals_eaten;    // Cuántas veces ha comido
 	size_t			last_meal;      // Último tiempo en que comió
@@ -49,7 +50,7 @@ typedef struct s_philo
 	pthread_mutex_t	*write_lock;   // Protege los mensajes en consola
 	pthread_mutex_t	*dead_lock;    // Protege el acceso a dead_flag
 	pthread_mutex_t	*meal_lock;    // Protege eating, meals_eaten, last_meal
-}	t_philo;
+}					t_philo;
 
 typedef struct s_program
 {

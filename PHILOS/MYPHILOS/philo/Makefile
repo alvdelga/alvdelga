@@ -6,7 +6,7 @@
 #    By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 10:45:43 by alvdelga          #+#    #+#              #
-#    Updated: 2025/03/26 08:05:12 by alvdelga         ###   ########.fr        #
+#    Updated: 2025/03/27 11:42:39 by alvdelga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ OBJ			:= $(SRC:.c=.o)  # Convierte los archivos fuente .c a archivos objeto .o
 
 CC			:= gcc
 CFLAGS		:= -Wall -Wextra -Werror -lpthread
-# SANITIZER	:= -fsanitize=thread -g
+# SANITIZER	:= -fsanitize=thread
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(SANITIZER)
