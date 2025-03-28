@@ -6,23 +6,22 @@
 #    By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 10:45:43 by alvdelga          #+#    #+#              #
-#    Updated: 2025/03/27 11:42:39 by alvdelga         ###   ########.fr        #
+#    Updated: 2025/03/28 13:03:27 by alvdelga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		:= philo
 SRCFILES	:= main.c init.c threads.c philo_observer.c actions.c utils.c
 SRC			:= $(addprefix ./src/, $(SRCFILES))
-OBJ			:= $(SRC:.c=.o)  # Convierte los archivos fuente .c a archivos objeto .o
-
+OBJ			:= $(SRC:.c=.o)
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror -pthread
-# SANITIZER	:= -fsanitize=thread -g
+# SANITIZER	:= -fsanitize=thread
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(SANITIZER)
 
-# Regla para compilar cada archivo .c en un archivo .o
+
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -36,9 +35,6 @@ fclean: clean
 
 re: fclean all
 
-debug: CFLAGS += -g
-debug: re	
-
 test: $(NAME)
 	@echo "Running tests..."
 	@correct=0; \
@@ -48,28 +44,34 @@ test: $(NAME)
 	trap 'echo "Tests interrupted"; kill $$!; exit 1' INT; \
 	for args in "4 410 200 200" "5 800 200 200" "5 600 150 150" "100 800 200 200" "105 800 200 200" "200 800 200 200"; do \
 		echo "[+] Running with parameters: $$args"; \
-		sleep 3; \
+		sleep 2; \
 		./$(NAME) $$args > /dev/null 2>&1 & pid=$$!; \
-		sleep $$num; \
+		echo -n "Progress: ["; \
+		i=0; \
+		while [ $$i -lt $$num ]; do \
+			printf "#"; \
+			sleep 1; \
+			i=$$((i + 1)); \
+		done; \
+		echo "]"; \
 		if ps -p $$pid > /dev/null; then \
-			echo "Done: Execution of './$(NAME) $$args' ran for $$num seconds successfully."; \
+			echo "✅  Done: './$(NAME) $$args' ran for $$num seconds."; \
 			kill $$pid; \
-			num=$$((num)); \
 			wait $$pid 2>/dev/null; \
 			correct=$$((correct + 1)); \
 		else \
-			echo "Error: Execution of './$(NAME) $$args' finished before $$num seconds."; \
+			echo "❌  Error: './$(NAME) $$args' finished before $$num seconds."; \
 			incorrect=$$((incorrect + 1)); \
-			failed_tests="$$failed_tests $$args"; \
-			# break; \
+			failed_tests="$$failed_tests | $$args"; \
 		fi; \
-		sleep 2; \
+		echo ""; \
+		sleep 1; \
 	done; \
 	echo "=============================="; \
-	echo "Test Results:"; \
-	echo "Correct Tests: $$correct"; \
-	echo "Incorrect Tests: $$incorrect"; \
-	echo "Failed Tests: $$failed_tests"; \
+	echo "🧪 Test Results:"; \
+	echo "✅  Correct Tests: $$correct"; \
+	echo "❌  Incorrect Tests: $$incorrect"; \
+	echo "💥  Failed Tests:$$failed_tests"; \
 	echo "=============================="
 
 

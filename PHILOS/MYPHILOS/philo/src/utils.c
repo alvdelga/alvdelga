@@ -6,16 +6,16 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 19:57:43 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/26 15:54:25 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/28 12:45:17 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "philo.h"
+#include "philo.h"
 
 int	ft_atoi(const char *str)
 {
-	unsigned long long res;
-	int			negative;
+	unsigned long long	res;
+	int					negative;
 
 	negative = 1;
 	res = 0;

@@ -1,9 +1,0 @@
-----------------8<-------------[ START TEST 
-        💻 TEST
-./a.out         🔎 YOUR OUTPUT:
-../../rendu/ft_list_size/ft_list_size.c:13:22: error: unknown type name ‘t_list’
-   13 | int     ft_list_size(t_list *begin_list)
-      |                      ^~~~~~
-
-        ❌ COMPILATION ERROR
-----------------8<------------- END TEST ]

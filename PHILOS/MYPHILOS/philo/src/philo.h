@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 14:20:06 by druina            #+#    #+#             */
-/*   Updated: 2025/03/27 11:58:01 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/28 12:27:40 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdbool.h>
 # include <string.h>
 
-# define MAX_PHILO 300
+# define MAX_PHILO 200
 # define RESET    "\033[0m"
 # define RED      "\033[31m"
 # define GREEN    "\033[32m" 
@@ -29,12 +29,14 @@ typedef struct s_philo
 {
 	pthread_t		thread;
 	int				id;
-
-	//Protegidas por meal_lock
-	bool			eating;         // Indica si el filósofo está comiendo
-	int				meals_eaten;    // Cuántas veces ha comido
-	size_t			last_meal;      // Último tiempo en que comió
-
+	pthread_mutex_t	*r_fork;
+	pthread_mutex_t	*l_fork;
+	pthread_mutex_t	*write_lock;
+	pthread_mutex_t	*dead_lock;
+	pthread_mutex_t	*meal_lock;
+	bool			eating;
+	int				meals_eaten;
+	size_t			last_meal;
 	size_t			time_to_die;
 	size_t			time_to_eat;
 	size_t			time_to_sleep;
@@ -43,13 +45,6 @@ typedef struct s_philo
 	int				num_times_to_eat;
 	int				*dead;
 
-	pthread_mutex_t	*r_fork;       // Tenedor izquierdo
-	pthread_mutex_t	*l_fork;       // Tenedor derecho
-
-	// Mutex compartidos
-	pthread_mutex_t	*write_lock;   // Protege los mensajes en consola
-	pthread_mutex_t	*dead_lock;    // Protege el acceso a dead_flag
-	pthread_mutex_t	*meal_lock;    // Protege eating, meals_eaten, last_meal
 }					t_philo;
 
 typedef struct s_program
@@ -66,11 +61,9 @@ int					check_arg_content(char *arg);
 int					check_valid_args(char **argv);
 void				destory_all(char *str, t_program *program,
 						pthread_mutex_t *forks);
-
-// Initialization
-int				init_program(t_program *program, t_philo *philos);
-int				init_forks(pthread_mutex_t *forks, int philo_num);
-void				init_philos(t_philo *philoso, t_program *program,
+int					init_program(t_program *program, t_philo *philos);
+int					init_forks(pthread_mutex_t *forks, int philo_num);
+void				init_philos(t_program *program,
 						pthread_mutex_t *forks, char **argv);
 void				init_input(t_philo *philo, char **argv);
 
