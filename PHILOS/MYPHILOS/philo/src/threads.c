@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 21:21:19 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/28 12:43:16 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/28 22:38:03 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,31 @@ int	thread_create(t_program *program, pthread_mutex_t *forks)
 }
 
 /*
+Tiempo         | Hilo Filósofo                   | Hilo Monitor
+---------------|----------------------------------|-------------------------------
+T = 1000 ms    | intenta lock(meal_lock)         | -
+               | consigue el lock                | -
+               | eating = 1                      | -
+               | last_meal = 1000                | -
+               | meals_eaten++                   | -
+               | unlock(meal_lock)               | -
+
+T = 1001 ms    | ft_usleep(time_to_eat = 200)    | intenta lock(meal_lock)
+               | (durmiendo)                     | consigue el lock
+               |                                 | get_current_time() - last_meal = 1
+               |                                 | eating == 1 → NO ha muerto
+               |                                 | unlock(meal_lock)
+
+T = 1201 ms    | despierta del ft_usleep         | -
+               | intenta lock(meal_lock)         | -
+               | consigue el lock                | -
+               | eating = 0                      | -
+               | unlock(meal_lock)               | -
+
+T = 1202 ms    | sigue con rutina                | intenta lock(meal_lock)
+               |                                 | consigue el lock
+               |                                 | get_current_time() - last_meal = 202
+               |                                 | eating == 0 → ¿ha muerto?
 Main thread (thread_create)
 │
 ├──🧵 pthread_create(observer)        → Empieza el hilo del monitor

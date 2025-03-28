@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 21:20:25 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/28 12:48:52 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/28 21:12:10 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_dead(t_philo *philos)
 	{
 		if (philosopher_dead(&philos[i], philos[i].time_to_die))
 		{
-			print_message(RED" died"RESET, &philos[i], philos[i].id);
+			print_message(RED "died" RESET, &philos[i], philos[i].id);
 			pthread_mutex_lock(philos[i].dead_lock);
 			*philos->dead = 1;
 			pthread_mutex_unlock(philos[i].dead_lock);
