@@ -20,7 +20,7 @@ void print_current_time() {
 
 int main() {
     printf("Imprimiendo la hora actual:\n");
-    print_current_time();
+    print_current_time();P∏
 
     // Esperar 2 segundos
     printf("Esperando 2 segundos...\n");

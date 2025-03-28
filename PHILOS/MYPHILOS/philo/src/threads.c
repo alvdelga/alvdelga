@@ -33,7 +33,7 @@ void	*philo_routine(void *pointer)
 	// if (philo->id % 2 == 0)
 	// 	ft_usleep(10);
 	// if (philo->num_of_philos % 2 == 0)
-	// 	ft_usleep(10);
+	// 	ft_usleep(5);
 	ft_usleep((philo->id % 2) * 5);
 	// ft_usleep((philo->id % 2) * (philo->time_to_eat * 0.9 + 1));
 	while (!dead_loop(philo))
