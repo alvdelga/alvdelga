@@ -17,7 +17,7 @@ OBJ			:= $(SRC:.c=.o)  # Convierte los archivos fuente .c a archivos objeto .o
 
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror -pthread
-SANITIZER	:= -fsanitize=thread -g
+# SANITIZER	:= -fsanitize=thread -g
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(SANITIZER)
