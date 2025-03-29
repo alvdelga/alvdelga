@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/26 14:20:06 by druina            #+#    #+#             */
-/*   Updated: 2025/03/28 12:27:40 by alvdelga         ###   ########.fr       */
+/*   Created: 2025/03/07 14:20:06 by alvdelga          #+#    #+#             */
+/*   Updated: 2025/03/29 20:01:32 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_philo
 {
 	pthread_t		thread;
 	int				id;
+	struct s_program	*progra;
 	pthread_mutex_t	*r_fork;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*write_lock;
@@ -49,6 +50,8 @@ typedef struct s_philo
 
 typedef struct s_program
 {
+	bool			monitor_ready;
+	pthread_mutex_t	monitor_lock;
 	int				dead_flag;
 	pthread_mutex_t	dead_lock;
 	pthread_mutex_t	meal_lock;
@@ -74,7 +77,7 @@ void				*philo_routine(void *pointer);
 
 // Actions
 void				eat(t_philo *philo);
-void				dream(t_philo *philo);
+void				ft_sleep(t_philo *philo);
 void				think(t_philo *philo);
 
 // observer utils

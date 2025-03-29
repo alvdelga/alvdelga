@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/23 21:21:19 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/28 22:38:03 by alvdelga         ###   ########.fr       */
+/*   Created: 2025/03/07 14:20:06 by alvdelga          #+#    #+#             */
+/*   Updated: 2025/03/29 20:03:50 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,28 @@ void	*philo_routine(void *pointer)
 	t_philo	*philo;
 
 	philo = (t_philo *)pointer;
+
+	// Esperar a que el monitor esté listo
+	pthread_mutex_lock(&philo->progra->monitor_lock);
+	while (!philo->progra->monitor_ready)
+	{
+		pthread_mutex_unlock(&philo->progra->monitor_lock);
+		usleep(50);
+		pthread_mutex_lock(&philo->progra->monitor_lock);
+	}
+	pthread_mutex_unlock(&philo->progra->monitor_lock);
+
 	ft_usleep((philo->id % 2) * 5);
+
 	while (!dead_loop(philo))
 	{
 		eat(philo);
-		dream(philo);
+		ft_sleep(philo);
 		think(philo);
 	}
 	return (pointer);
 }
+
 
 int	thread_create(t_program *program, pthread_mutex_t *forks)
 {
@@ -67,7 +80,7 @@ int	thread_create(t_program *program, pthread_mutex_t *forks)
 
 /*
 Tiempo         | Hilo Filósofo                   | Hilo Monitor
----------------|----------------------------------|-------------------------------
+---------------|-------------------------|-------------------------------
 T = 1000 ms    | intenta lock(meal_lock)         | -
                | consigue el lock                | -
                | eating = 1                      | -
@@ -77,7 +90,7 @@ T = 1000 ms    | intenta lock(meal_lock)         | -
 
 T = 1001 ms    | ft_usleep(time_to_eat = 200)    | intenta lock(meal_lock)
                | (durmiendo)                     | consigue el lock
-               |                                 | get_current_time() - last_meal = 1
+               |                         | get_current_time() - last_meal = 1
                |                                 | eating == 1 → NO ha muerto
                |                                 | unlock(meal_lock)
 
@@ -89,7 +102,7 @@ T = 1201 ms    | despierta del ft_usleep         | -
 
 T = 1202 ms    | sigue con rutina                | intenta lock(meal_lock)
                |                                 | consigue el lock
-               |                                 | get_current_time() - last_meal = 202
+               |                     | get_current_time() - last_meal = 202
                |                                 | eating == 0 → ¿ha muerto?
 Main thread (thread_create)
 │

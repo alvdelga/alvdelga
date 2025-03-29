@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/17 08:48:15 by druina            #+#    #+#             */
-/*   Updated: 2025/03/28 20:39:44 by alvdelga         ###   ########.fr       */
+/*   Created: 2025/03/07 14:20:06 by alvdelga          #+#    #+#             */
+/*   Updated: 2025/03/29 08:13:32 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	think(t_philo *philo)
 	ft_usleep(1);
 }
 
-void	dream(t_philo *philo)
+void	ft_sleep(t_philo *philo)
 {
 	print_message("is sleeping", philo, philo->id);
 	ft_usleep(philo->time_to_sleep);

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/09 12:05:40 by druina            #+#    #+#             */
-/*   Updated: 2025/03/28 12:39:35 by alvdelga         ###   ########.fr       */
+/*   Created: 2025/03/07 14:20:06 by alvdelga          #+#    #+#             */
+/*   Updated: 2025/03/29 20:02:38 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ void	init_philos(t_program *program, pthread_mutex_t *forks, char **argv)
 		philosofer->dead_lock = &program->dead_lock;
 		philosofer->meal_lock = &program->meal_lock;
 		philosofer->dead = &program->dead_flag;
+		philosofer->progra = program;
 		philosofer->l_fork = &forks[i];
 		philosofer->r_fork = &forks[(i - 1 + num_philos) % num_philos];
+
 		i++;
 	}
 }
@@ -74,11 +76,15 @@ int	init_program(t_program *program, t_philo *philosofer)
 {
 	program->dead_flag = 0;
 	program->philos = philosofer;
+	program->monitor_ready = false;
+
 	if (pthread_mutex_init(&program->write_lock, NULL) != 0)
 		return (printf("[!] Failed to init write_lock\n"), 1);
 	if (pthread_mutex_init(&program->dead_lock, NULL) != 0)
 		return (printf("[!] Failed to init dead_lock\n"), 1);
 	if (pthread_mutex_init(&program->meal_lock, NULL) != 0)
 		return (printf("[!] Failed to init meal_lock\n"), 1);
+	if (pthread_mutex_init(&program->monitor_lock, NULL) != 0)
+		return (printf("[!] Failed to init monitor_lock\n"), 1);
 	return (0);
 }

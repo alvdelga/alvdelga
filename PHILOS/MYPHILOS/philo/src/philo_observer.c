@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/23 21:20:25 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/28 21:12:10 by alvdelga         ###   ########.fr       */
+/*   Created: 2025/03/07 14:20:06 by alvdelga          #+#    #+#             */
+/*   Updated: 2025/03/29 20:04:10 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,15 @@ void	*philo_observer(void *pointer)
 	t_philo	*philos;
 
 	philos = (t_philo *)pointer;
+
+	// Avisar que el monitor está listo
+	pthread_mutex_lock(&philos[0].progra->monitor_lock);
+	philos[0].progra->monitor_ready = true;
+	pthread_mutex_unlock(&philos[0].progra->monitor_lock);
+
 	while (1)
 		if (check_dead(philos) == 1 || check_all_ate(philos) == 1)
 			break ;
 	return (pointer);
 }
+

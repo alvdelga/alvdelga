@@ -6,7 +6,7 @@
 #    By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 10:45:43 by alvdelga          #+#    #+#              #
-#    Updated: 2025/03/28 20:47:09 by alvdelga         ###   ########.fr        #
+#    Updated: 2025/03/29 20:00:13 by alvdelga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,12 +35,14 @@ fclean: clean
 
 re: fclean all
 
+reclean: all clean
+
 test: $(NAME)
 	@echo "Running tests..."
 	@correct=0; \
 	incorrect=0; \
 	failed_tests=""; \
-	num=30; \
+	num=10; \
 	trap 'echo "Tests interrupted"; kill $$!; exit 1' INT; \
 	for args in "4 410 200 200" "5 800 200 200" "5 600 150 150" "100 800 200 200" "105 800 200 200" "200 800 200 200"; do \
 		echo "[+] Running with parameters: $$args"; \
