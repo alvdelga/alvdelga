@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:20:06 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/29 20:01:32 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/29 21:33:53 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ typedef struct s_philo
 
 typedef struct s_program
 {
-	bool			monitor_ready;
-	pthread_mutex_t	monitor_lock;
+	bool			observer_ready;
+	pthread_mutex_t	observer_lock;
 	int				dead_flag;
 	pthread_mutex_t	dead_lock;
 	pthread_mutex_t	meal_lock;

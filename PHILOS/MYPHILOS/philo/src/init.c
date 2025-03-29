@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:20:06 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/29 20:02:38 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/29 21:32:40 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	init_program(t_program *program, t_philo *philosofer)
 {
 	program->dead_flag = 0;
 	program->philos = philosofer;
-	program->monitor_ready = false;
+	program->observer_ready = false;
 
 	if (pthread_mutex_init(&program->write_lock, NULL) != 0)
 		return (printf("[!] Failed to init write_lock\n"), 1);
@@ -84,7 +84,7 @@ int	init_program(t_program *program, t_philo *philosofer)
 		return (printf("[!] Failed to init dead_lock\n"), 1);
 	if (pthread_mutex_init(&program->meal_lock, NULL) != 0)
 		return (printf("[!] Failed to init meal_lock\n"), 1);
-	if (pthread_mutex_init(&program->monitor_lock, NULL) != 0)
+	if (pthread_mutex_init(&program->observer_lock, NULL) != 0)
 		return (printf("[!] Failed to init monitor_lock\n"), 1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:20:06 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/29 20:03:50 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/29 21:44:35 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,15 @@ void	*philo_routine(void *pointer)
 
 	philo = (t_philo *)pointer;
 
-	// Esperar a que el monitor esté listo
-	pthread_mutex_lock(&philo->progra->monitor_lock);
-	while (!philo->progra->monitor_ready)
+	// Esperar a que el observer esté listo
+	pthread_mutex_lock(&philo->progra->observer_lock);
+	while (!philo->progra->observer_ready)
 	{
-		pthread_mutex_unlock(&philo->progra->monitor_lock);
+		pthread_mutex_unlock(&philo->progra->observer_lock);
 		usleep(50);
-		pthread_mutex_lock(&philo->progra->monitor_lock);
+		pthread_mutex_lock(&philo->progra->observer_lock);
 	}
-	pthread_mutex_unlock(&philo->progra->monitor_lock);
+	pthread_mutex_unlock(&philo->progra->observer_lock);
 
 	ft_usleep((philo->id % 2) * 5);
 
@@ -79,7 +79,7 @@ int	thread_create(t_program *program, pthread_mutex_t *forks)
 }
 
 /*
-Tiempo         | Hilo Filósofo                   | Hilo Monitor
+Tiempo         | Hilo Filósofo                   | Hilo observer
 ---------------|-------------------------|-------------------------------
 T = 1000 ms    | intenta lock(meal_lock)         | -
                | consigue el lock                | -
@@ -106,7 +106,7 @@ T = 1202 ms    | sigue con rutina                | intenta lock(meal_lock)
                |                                 | eating == 0 → ¿ha muerto?
 Main thread (thread_create)
 │
-├──🧵 pthread_create(observer)        → Empieza el hilo del monitor
+├──🧵 pthread_create(observer)        → Empieza el hilo del observer
 ├──🧵 pthread_create(philo[0])        → Empieza filósofo 1
 ├──🧵 pthread_create(philo[1])        → Empieza filósofo 2
 ├──🧵 ...

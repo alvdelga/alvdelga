@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:20:06 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/29 20:04:10 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/29 21:38:40 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	philosopher_dead(t_philo *philo, size_t time_to_die)
 {
 	pthread_mutex_lock(philo->meal_lock);
 	if (get_current_time() - philo->last_meal >= time_to_die
-		&& philo->eating == 0)
+		&& philo->eating == false)
 		return (pthread_mutex_unlock(philo->meal_lock), 1);
 	pthread_mutex_unlock(philo->meal_lock);
 	return (0);
@@ -82,9 +82,9 @@ void	*philo_observer(void *pointer)
 	philos = (t_philo *)pointer;
 
 	// Avisar que el monitor está listo
-	pthread_mutex_lock(&philos[0].progra->monitor_lock);
-	philos[0].progra->monitor_ready = true;
-	pthread_mutex_unlock(&philos[0].progra->monitor_lock);
+	pthread_mutex_lock(&philos[0].progra->observer_lock);
+	philos[0].progra->observer_ready = true;
+	pthread_mutex_unlock(&philos[0].progra->observer_lock);
 
 	while (1)
 		if (check_dead(philos) == 1 || check_all_ate(philos) == 1)
