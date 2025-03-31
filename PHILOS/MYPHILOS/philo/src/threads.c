@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:20:06 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/29 21:44:35 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/31 19:25:04 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	*philo_routine(void *pointer)
 	t_philo	*philo;
 
 	philo = (t_philo *)pointer;
-
-	// Esperar a que el observer esté listo
 	pthread_mutex_lock(&philo->progra->observer_lock);
 	while (!philo->progra->observer_ready)
 	{
@@ -36,9 +34,7 @@ void	*philo_routine(void *pointer)
 		pthread_mutex_lock(&philo->progra->observer_lock);
 	}
 	pthread_mutex_unlock(&philo->progra->observer_lock);
-
 	ft_usleep((philo->id % 2) * 5);
-
 	while (!dead_loop(philo))
 	{
 		eat(philo);
@@ -47,7 +43,6 @@ void	*philo_routine(void *pointer)
 	}
 	return (pointer);
 }
-
 
 int	thread_create(t_program *program, pthread_mutex_t *forks)
 {
@@ -77,46 +72,3 @@ int	thread_create(t_program *program, pthread_mutex_t *forks)
 	}
 	return (0);
 }
-
-/*
-Tiempo         | Hilo Filósofo                   | Hilo observer
----------------|-------------------------|-------------------------------
-T = 1000 ms    | intenta lock(meal_lock)         | -
-               | consigue el lock                | -
-               | eating = 1                      | -
-               | last_meal = 1000                | -
-               | meals_eaten++                   | -
-               | unlock(meal_lock)               | -
-
-T = 1001 ms    | ft_usleep(time_to_eat = 200)    | intenta lock(meal_lock)
-               | (durmiendo)                     | consigue el lock
-               |                         | get_current_time() - last_meal = 1
-               |                                 | eating == 1 → NO ha muerto
-               |                                 | unlock(meal_lock)
-
-T = 1201 ms    | despierta del ft_usleep         | -
-               | intenta lock(meal_lock)         | -
-               | consigue el lock                | -
-               | eating = 0                      | -
-               | unlock(meal_lock)               | -
-
-T = 1202 ms    | sigue con rutina                | intenta lock(meal_lock)
-               |                                 | consigue el lock
-               |                     | get_current_time() - last_meal = 202
-               |                                 | eating == 0 → ¿ha muerto?
-Main thread (thread_create)
-│
-├──🧵 pthread_create(observer)        → Empieza el hilo del observer
-├──🧵 pthread_create(philo[0])        → Empieza filósofo 1
-├──🧵 pthread_create(philo[1])        → Empieza filósofo 2
-├──🧵 ...
-│
-└──🔒 pthread_join(observer)          → main SE BLOQUEA ESPERANDO
-           └── Mientras tanto:
-               ├── 🧵 observer da vueltas: "¿Alguien murió?"
-               ├── 🧵 filósofo 1 come/piensa/duerme
-               ├── 🧵 filósofo 2 también
-               └── etc.
-
-
-*/

@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:20:06 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/29 21:32:40 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/31 19:21:00 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	init_philos(t_program *program, pthread_mutex_t *forks, char **argv)
 		philosofer->progra = program;
 		philosofer->l_fork = &forks[i];
 		philosofer->r_fork = &forks[(i - 1 + num_philos) % num_philos];
-
 		i++;
 	}
 }
@@ -77,7 +76,6 @@ int	init_program(t_program *program, t_philo *philosofer)
 	program->dead_flag = 0;
 	program->philos = philosofer;
 	program->observer_ready = false;
-
 	if (pthread_mutex_init(&program->write_lock, NULL) != 0)
 		return (printf("[!] Failed to init write_lock\n"), 1);
 	if (pthread_mutex_init(&program->dead_lock, NULL) != 0)

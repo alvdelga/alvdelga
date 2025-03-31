@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:20:06 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/31 07:43:24 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/31 19:22:07 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,24 @@
 
 typedef struct s_philo
 {
-	pthread_t		thread;
-	int				id;
+	pthread_t			thread;
+	int					id;
 	struct s_program	*progra;
-	pthread_mutex_t	*r_fork;
-	pthread_mutex_t	*l_fork;
-	pthread_mutex_t	*write_lock;
-	pthread_mutex_t	*dead_lock;
-	pthread_mutex_t	*meal_lock;
-	bool			eating;
-	int				meals_eaten;
-	size_t			last_meal;
-	size_t			time_to_die;
-	size_t			time_to_eat;
-	size_t			time_to_sleep;
-	size_t			start_time;
-	int				num_of_philos;
-	int				num_times_to_eat;
-	int				*dead;
+	pthread_mutex_t		*r_fork;
+	pthread_mutex_t		*l_fork;
+	pthread_mutex_t		*write_lock;
+	pthread_mutex_t		*dead_lock;
+	pthread_mutex_t		*meal_lock;
+	bool				eating;
+	int					meals_eaten;
+	size_t				last_meal;
+	size_t				time_to_die;
+	size_t				time_to_eat;
+	size_t				time_to_sleep;
+	size_t				start_time;
+	int					num_of_philos;
+	int					num_times_to_eat;
+	int					*dead;
 
 }					t_philo;
 

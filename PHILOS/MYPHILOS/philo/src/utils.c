@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 19:57:43 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/30 07:35:11 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/31 19:26:22 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	ft_atoi(const char *str)
 	return (res * negative);
 }
 
-// Checks the len of the string
-
 int	ft_strlen(char *str)
 {
 	int	i;
@@ -47,7 +45,6 @@ int	ft_strlen(char *str)
 		i++;
 	return (i);
 }
-// Destroys all the mutexes
 
 void	destory_all(char *str, t_program *program, pthread_mutex_t *forks)
 {
@@ -69,8 +66,6 @@ void	destory_all(char *str, t_program *program, pthread_mutex_t *forks)
 	}
 }
 
-// Improved version of sleep function
-
 int	ft_usleep(size_t ms)
 {
 	size_t	start;
@@ -79,9 +74,9 @@ int	ft_usleep(size_t ms)
 	while ((get_current_time() - start) < ms)
 	{
 		if ((ms - (get_current_time() - start)) > 5)
-			usleep(500); // más eficiente si falta mucho
+			usleep(500);
 		else
-			usleep(100); // más preciso al final
+			usleep(100);
 	}
 	return (0);
 }
@@ -95,12 +90,6 @@ int	ft_usleep(size_t ms)
 // 		usleep(100);
 // 	return (0);
 // }
-
-// Esta función duerme durante el tiempo indicado en milisegundos,
-// dividiendo el sueño en pausas pequeñas (0.5 ms) para comprobar
-// frecuentemente si ya ha pasado el tiempo requerido. Esto mejora
-// la precisión frente a usleep tradicional, que puede dormir más
-// de lo esperado en entornos multihilo.
 
 size_t	get_current_time(void)
 {
