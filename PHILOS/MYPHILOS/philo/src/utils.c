@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/23 19:57:43 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/28 12:45:17 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/30 07:35:11 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,31 @@ void	destory_all(char *str, t_program *program, pthread_mutex_t *forks)
 
 // Improved version of sleep function
 
-int	ft_usleep(size_t milliseconds)
+int	ft_usleep(size_t ms)
 {
 	size_t	start;
 
 	start = get_current_time();
-	while ((get_current_time() - start) < milliseconds)
-		usleep(500);
+	while ((get_current_time() - start) < ms)
+	{
+		if ((ms - (get_current_time() - start)) > 5)
+			usleep(500); // más eficiente si falta mucho
+		else
+			usleep(100); // más preciso al final
+	}
 	return (0);
 }
+
+// int	ft_usleep(size_t milliseconds)
+// {
+// 	size_t	start;
+
+// 	start = get_current_time();
+// 	while ((get_current_time() - start) < milliseconds)
+// 		usleep(100);
+// 	return (0);
+// }
+
 // Esta función duerme durante el tiempo indicado en milisegundos,
 // dividiendo el sueño en pausas pequeñas (0.5 ms) para comprobar
 // frecuentemente si ya ha pasado el tiempo requerido. Esto mejora

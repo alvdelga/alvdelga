@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:20:06 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/29 22:01:57 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/31 07:44:42 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,20 @@ void	eat(t_philo *philo)
 {
 	if (take_and_lock_forks(philo))
 		return ;
-	philo->eating = true;
 	pthread_mutex_lock(philo->meal_lock);
+	philo->eating = true;
 	philo->last_meal = get_current_time();
 	philo->meals_eaten++;
 	pthread_mutex_unlock(philo->meal_lock);
 	print_message("is eating", philo, philo->id);
 	ft_usleep(philo->time_to_eat);
+	pthread_mutex_lock(philo->meal_lock);
 	philo->eating = false;
+	pthread_mutex_unlock(philo->meal_lock);
 	pthread_mutex_unlock(philo->l_fork);
 	pthread_mutex_unlock(philo->r_fork);
 }
+
 
 // void	eat(t_philo *philo)
 // {
@@ -95,7 +98,7 @@ void	eat(t_philo *philo)
 // 	pthread_mutex_unlock(philo->meal_lock);
 // 	// DEBUG: imprime cuántas veces ha comido
 // 	// printf("[DEBUG] Philo %d has eaten %d times\n",
-//		philo->id, philo->meals_eaten);
+// 	// philo->id, philo->meals_eaten;
 // 	ft_usleep(philo->time_to_eat);
 // 	philo->eating = 0;
 // 	pthread_mutex_unlock(philo->l_fork);

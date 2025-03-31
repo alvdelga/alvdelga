@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:20:06 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/29 21:33:53 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/31 07:43:24 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <string.h>
 
 # define MAX_PHILO 200
+# define DEBUG 0
+
 # define RESET    "\033[0m"
 # define RED      "\033[31m"
 # define GREEN    "\033[32m" 

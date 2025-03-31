@@ -6,7 +6,7 @@
 /*   By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 14:20:06 by alvdelga          #+#    #+#             */
-/*   Updated: 2025/03/29 21:38:40 by alvdelga         ###   ########.fr       */
+/*   Updated: 2025/03/31 07:33:51 by alvdelga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,34 @@ int	philosopher_dead(t_philo *philo, size_t time_to_die)
 	return (0);
 }
 
+// int	check_dead(t_philo *philos)
+// {
+// 	int	i;
+// 	int	num_philos;
+
+// 	i = 0;
+// 	num_philos = philos[0].num_of_philos;
+// 	while (i < num_philos)
+// 	{
+// 		if (philosopher_dead(&philos[i], philos[i].time_to_die))
+// 		{
+// 			print_message(RED "died" RESET, &philos[i], philos[i].id);
+// 			pthread_mutex_lock(philos[i].dead_lock);
+// 			*philos->dead = 1;
+// 			pthread_mutex_unlock(philos[i].dead_lock);
+// 			return (1);
+// 		}
+// 		i++;
+// 	}
+// 	return (0);
+// }
+
 int	check_dead(t_philo *philos)
 {
-	int	i;
-	int	num_philos;
+	int		i;
+	int		num_philos;
+	size_t	now;
+	size_t	delay;
 
 	i = 0;
 	num_philos = philos[0].num_of_philos;
@@ -33,6 +57,10 @@ int	check_dead(t_philo *philos)
 	{
 		if (philosopher_dead(&philos[i], philos[i].time_to_die))
 		{
+			now = get_current_time();
+			delay = now - philos[i].last_meal;
+			if (DEBUG)
+				printf("💀 DEBUG: Philo %d murió tras %zu ms (límite = %zu ms)\n", philos[i].id, delay, philos[i].time_to_die);
 			print_message(RED "died" RESET, &philos[i], philos[i].id);
 			pthread_mutex_lock(philos[i].dead_lock);
 			*philos->dead = 1;
@@ -43,6 +71,7 @@ int	check_dead(t_philo *philos)
 	}
 	return (0);
 }
+
 
 // Checks if all the philos ate the num_of_meals
 

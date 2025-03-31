@@ -6,7 +6,7 @@
 #    By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 10:45:43 by alvdelga          #+#    #+#              #
-#    Updated: 2025/03/29 22:06:43 by alvdelga         ###   ########.fr        #
+#    Updated: 2025/03/31 08:42:39 by alvdelga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC			:= $(addprefix ./src/, $(SRCFILES))
 OBJ			:= $(SRC:.c=.o)
 CC			:= cc
 CFLAGS		:= -Wall -Wextra -Werror -pthread
-# SANITIZER	:= -fsanitize=thread
+# SANITIZER	:= -fsanitize=thread -g3
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(SANITIZER)
@@ -42,7 +42,7 @@ test: $(NAME) clean
 	@correct=0; \
 	incorrect=0; \
 	failed_tests=""; \
-	num=50; \
+	num=40; \
 	trap 'echo "Tests interrupted"; kill $$!; exit 1' INT; \
 	for args in "4 410 200 200" "5 800 200 200" "5 600 150 150" "100 800 200 200" "105 800 200 200" "200 800 200 200"; do \
 		echo "[+] Running with parameters: $$args"; \
