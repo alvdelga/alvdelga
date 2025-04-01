@@ -6,11 +6,11 @@
 #    By: alvdelga <alvdelga@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/24 10:45:43 by alvdelga          #+#    #+#              #
-#    Updated: 2025/03/31 18:46:21 by alvdelga         ###   ########.fr        #
+#    Updated: 2025/03/31 20:44:07 by alvdelga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= philotest
+NAME		:= philo
 SRCFILES	:= main.c init.c threads.c philo_observer.c actions.c utils.c
 SRC			:= $(addprefix ./src/, $(SRCFILES))
 OBJ			:= $(SRC:.c=.o)
