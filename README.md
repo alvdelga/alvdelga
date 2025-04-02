@@ -11,6 +11,14 @@
 🎥 I also enjoy editing videos and experimenting with design and UX/UI  
 
 ---
+### 💼 Certificaciones
+
+🔗 [Mis badges en Credly](https://www.credly.com/users/alvaro-delgado-matud)
+🔗 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/alvarodelgadomatud/) 
+
+🎓 42 Madrid | 🛡️ Ciberseguridad | 💻 Desarrollo en C y Python
+
+
 ## 💻 Stack:
 ***
 <table align="center" width="100%">
