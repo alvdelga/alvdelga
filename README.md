@@ -30,10 +30,10 @@
 
 ## 🌐 Connect with me
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/alvdelga)  
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/alvarodelgadomatud/)  
 [![42 Profile](https://img.shields.io/badge/42%20Madrid-black?logo=42&style=for-the-badge)](https://profile.intra.42.fr/users/alvdelga)  
-[![Discord](https://img.shields.io/badge/Discord-alvdelga%234242-7289DA?logo=discord&style=for-the-badge)](#)
+
 
 ---
 
-![snake gif](https://github.com/alvdelga/alvdelga/blob/output/github-contribution-grid-snake.svg)
+![Snake animation](https://github.com/alvdelga/alvdelga/blob/output/github-contribution-grid-snake.svg)
