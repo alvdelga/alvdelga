@@ -12,8 +12,6 @@
 
 ---
 ## 💻 Stack:
-
-### Stack:
 ***
 <table align="center" width="100%">
   <tr>
@@ -27,7 +25,7 @@
       />
     </th>
     <th align="center" width="50%" colspan="2">
-      <img width="70%" src="https://github.com/alvdelga/alvdelga/blob/main/assets/hacker-cyber.gif?raw=true" alt="cybersec-coding" />
+      <img width="60%" src="https://github.com/alvdelga/alvdelga/blob/main/assets/hacker-cyber.gif?raw=true" alt="cybersec-coding" />
     </th>
   </tr>
   <tr>
