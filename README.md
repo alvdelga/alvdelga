@@ -77,7 +77,7 @@
       <picture>
         <source media="(prefers-color-scheme: dark)" srcset="https://github.com/alvdelga/alvdelga/blob/output/github-snake-dark.svg">
         <source media="(prefers-color-scheme: light)" srcset="https://github.com/alvdelga/alvdelga/blob/output/github-snake.svg">
-        <img alt="my-github-snake" src="https://github.com/alvdelga/alvdelga/blob/output/github-snake.svg">
+        <img alt="my-github-snake" src="https://github-readme-stats.vercel.app/api?username=alvdelga&show_icons=true&theme=tokyonight">
       </picture>
     </td>
   </tr>
