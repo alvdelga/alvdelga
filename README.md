@@ -60,4 +60,6 @@
 
 ---
 
-![Snake animation](https://github.com/alvdelga/alvdelga/blob/output/github-contribution-grid-snake.svg)
+## 🐍 Snake eating my contributions
+
+![snake gif](https://raw.githubusercontent.com/alvdelga/alvdelga/output/github-contribution-grid-snake-dark.svg)
