@@ -72,15 +72,6 @@
       <img src="https://www.vectorlogo.zone/logos/docker/docker-icon.svg" width="48" height="48" alt="Docker" /><br>Docker
     </td>
   </tr>
-  <tr>
-    <td align="center" colspan="4">
-      <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="https://github.com/alvdelga/alvdelga/blob/output/github-snake-dark.svg">
-        <source media="(prefers-color-scheme: light)" srcset="https://github.com/alvdelga/alvdelga/blob/output/github-snake.svg">
-        <img alt="my-github-snake" src="https://github-readme-stats.vercel.app/api?username=alvdelga&show_icons=true&theme=tokyonight">
-      </picture>
-    </td>
-  </tr>
 </table>
 
 <br>
