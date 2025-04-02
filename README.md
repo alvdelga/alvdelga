@@ -13,7 +13,7 @@
 ---
 ### 💼 Certificaciones
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/alvarodelgadomatud/) [![Credly](https://img.shields.io/badge/Credly-Profile-orange?style=for-the-badge&logo=credly)](https://www.credly.com/users/alvaro-delgado-matud)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/alvarodelgadomatud/) | [![Credly](https://img.shields.io/badge/Credly-Profile-orange?style=for-the-badge&logo=credly)](https://www.credly.com/users/alvaro-delgado-matud)
 
 
 🎓 42 Madrid | 🛡️ Ciberseguridad | 💻 Desarrollo en C y Python
