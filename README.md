@@ -15,6 +15,9 @@
 
 [![credly](https://img.shields.io/badge/Credly-Badges-orange?logo=data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRkZGIiBoZWlnaHQ9IjM2IiB2aWV3Qm94PSIwIDAgMzYgMzYiIHdpZHRoPSIzNiIgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE4IDBDOC4xNiAwIDAgOC4xNiAwIDE4czguMTYgMTggMTggMThjOS44NCAwIDE4LTguMTYgMTgtMThTMjcuODQgMCAxOCAwem0wIDMzLjEzQzguODUgMzMuMTMgMi44NyAyNy4xNSAyLjg3IDE4UzguODUgMi44NyAxOCAyLjg3UzMzLjEzIDguODUgMzMuMTMgMThTMjcuMTUgMzMuMTMgMTggMzMuMTN6Ii8+PC9zdmc+)](https://www.credly.com/users/alvaro-delgado-matud)   [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/alvarodelgadomatud/) 
 
+[![Credly](https://img.shields.io/badge/Credly-Profile-orange?style=for-the-badge&logo=credly)](https://www.credly.com/users/alvaro-delgado-matud)
+
+
 🎓 42 Madrid | 🛡️ Ciberseguridad | 💻 Desarrollo en C y Python
 
 
