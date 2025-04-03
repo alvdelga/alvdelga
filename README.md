@@ -7,8 +7,6 @@
 💡 Constantly learning and refining my skills in C, Python, and low-level development  
 🎯 Focused on building secure, efficient, and well-tested code  
 🌱 Committed to continuous growth and professional excellence  
-🎮 Retro gaming enthusiast and reverse engineering aficionado  
-🎥 I also enjoy editing videos and experimenting with design and UX/UI  
 
 ---
 ### 💼 Certificaciones
