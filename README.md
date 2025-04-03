@@ -2,13 +2,16 @@
 
 ## 👨‍💻 About Me
 
-📚 Student at 42 Madrid — where I break things to learn how to build them stronger  
-🛡️ Passionate about Cybersecurity, Pentesting & Systems Programming  
-💡 Constantly learning and refining my skills in C, Python, and low-level development  
-🎯 Focused on building secure, efficient, and well-tested code  
-🌱 Committed to continuous growth and professional excellence  
-
+🎯 Analista de Ciberseguridad en formación en [42 Madrid](https://42madrid.com)  
+🎓 Máster en Hacking Ético y Seguridad de Sistemas  
+💻 Apasionado por el desarrollo seguro, el análisis de vulnerabilidades y los sistemas Unix/Linux
 ---
+### 🛠️ Tecnologías y herramientas
+- Lenguajes: `C`, `Python`, `Bash`
+- Sistemas: `Linux`, `Unix`
+- Seguridad: `Pentesting`, `Wireshark`, `Nmap`, `Burp Suite`, `Metasploit`
+- Otros: `Docker`, `Git`, `Valgrind`, `GDB`
+
 ### 💼 Certificaciones
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?logo=linkedin&style=for-the-badge)](https://www.linkedin.com/in/alvarodelgadomatud/)   [![Credly](https://img.shields.io/badge/Credly-Profile-orange?style=for-the-badge&logo=credly)](https://www.credly.com/users/alvaro-delgado-matud)
@@ -16,6 +19,10 @@
 
 🎓 42 Madrid | 🛡️ Ciberseguridad | 💻 Desarrollo en C y Python
 
+### 🚀 Proyectos destacados
+🔐 [philosophers](https://github.com/alvdelga/philosophers) – Gestión de sincronización y concurrencia con hilos  
+💻 [minishell](https://github.com/alvdelga/minishell) – Intérprete de comandos tipo bash  
+🌐 [pipex](https://github.com/alvdelga/pipex) – Simulación de redirección de tuberías  
 
 ## 💻 Stack:
 ***
